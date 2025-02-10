@@ -1,0 +1,115 @@
+HTML5:
+
+1. Layout
+2. Advance input controls
+3. Semantic elements
+4. Web storage- localStorage(), sessionStorage()
+5. Location API
+6. Canvas & SVG
+
+- SVG
+.png, .jpg
+
+
+CSS:
+1. inline CSS
+2. internal CSS
+3. external CSS
+
+CSS rules:
+1. . (dot) ->class
+2. # ->id
+3. tagname-> <div>
+
+->CSS functions
+->CSS chaining r traversal process
+
+Bootstrap
+
+
+Javascript:
+* Client side scripting language
+* validate web page and web form
+* Control web page using Javascript events
+
+datatypes:
+
+1. var -> global scope
+2. let -> local scope
+
+Dom - document object model
+document ->Javascript window object
+         ->Can access html elements and data
+
+
+Javascript Functions:
+-> Execute unit of code
+
+Syntax: Function definition
+function functionName (parameters) {
+//statements
+}
+
+syntax: function calling
+functionName();
+
+Javascript Arrays & objects:
+->can store group of items in a object or variable
+
+Array declaration:
+var arrayName=[];
+
+
+Array Methods:
+1. push()
+2. pop()
+3. shift()
+4. unshift()
+5. slice();
+6. splice();
+7. find();
+8. map();
+9. filter();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="header">
+    header
+</div>
+<div id="content">
+    content
+<div>
+<div id="footer">
+    footer
+</div>
+
+
+//html5 semantic elements
+<header></header>
+<section></section>
+<footer></footer>
+<nav></nav>
+<article></article>
+<aside></aside>
+<table></table>
