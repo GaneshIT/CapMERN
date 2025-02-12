@@ -70,6 +70,46 @@ Array Methods:
 7. find();
 8. map();
 9. filter();
+10. includes();
+11. reduce()
+13. indexof("M") > 1 
+14. startsWith();
+15. endsWith();
+16. Math.Max();
+17. Math.Min();
+
+var m="Hai"
+var v=m.indexof('j')  =>-1
+
+Regex: [a-f]
+var input="acb";
+[a-zA-Z]
+input.match([6-9]{3}) ->true r false
+
+Regular expressin: https://www.programiz.com/javascript/regex
+
+phone number validation
+function validate()
+{
+  var text = document.getElementById("pno").value;
+  var regx = /^[0-9]\d{9}$/ ;
+  if(regx.test(text))
+    alert("valid");
+  else
+    alert("invalid");
+}
+
+//email address validation
+let regex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+let mail = "test@example.com";
+if (regex.test(mail)) {
+    console.log("Valid Email address");
+} else {
+    console.log("Invalid Email address");
+}
+
+
+
 
 
 

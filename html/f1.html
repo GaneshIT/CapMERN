@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <form>
+            Firstname:<input id="txtfnmae" type="text" value=""  name="fname" placeholder="enter Firstname" /><br/>
+            Email:<input type="text" value="" name="email" /><br/>
+            phone:<input type="text" value="" name="phone" /><br/>
+            Category:Green<input type="checkbox" value="green" onchange="selecteCat('Green')" name="category" />
+                    Blue<input type="checkbox" value="blue" onchange="selecteCat('Blue')" name="category" />
+                    Red<input type="checkbox" value="red" onchange="selecteCat('Red')" name="category" />
+                    grey<input type="checkbox" value="grey" name="category" />
+            <input id="btnsave" type="button" value="Save"  onclick="save()" />
+        </form>
+        <div id="categorylist"></div>
+        <script>
+            class s{
+    
+    constructor(id,name){
+        this.i=id;
+        this.name=name
+    }
+    get(){
+        return this.i;
+    }
+}
+const my=new s(1,'aa');
+console.log(my.get());
+            // var s="983675765765";
+            // if(s.length==10)
+            // for (let i=0;i<s.length;i++) {
+            //     if(s[i].charCodeAt(0)>=48 && s[i].charCodeAt(0)<=57)
+            //     {   }
+            //     else{
+            //         alert('Enter valid phone number')
+            //     }
+            // }
+            document.getElementById('btnsave').disabled=true;
+            function selecteCat(item){
+                document.getElementById('btnsave').disabled=false;
+            }
+            //document.getElementById('btnsave').disabled=true;
+            function getFname(){
+                if(document.getElementById('txtfnmae').value=='')
+                    {
+                        alert('Enter name');
+                        document.getElementById('btnsave').disabled=true;
+                    }
+                    else{
+                        document.getElementById('btnsave').disabled=false;
+                    }
+            }
+            //alert('hi')
+            //document.getElementById('btnsave').style.disabled=false;
+            function save(){
+                var categories=document.getElementsByName('category');
+                var list="<ul>";
+                for(let i=0;i<categories.length;i++){
+                    if(categories[i].checked){
+                        list=list+`<li style='background-color:${categories[i].value}'>
+                            ${categories[i].value}</li>`;
+                        categories[i].style.accentColor=categories[i].value;
+                        console.log(categories[i].value);
+                        console.log(categories[i].checked);
+                    }
+                }
+               // document.getElementById('btnsave').style.disabled=true;
+                document.getElementById('categorylist').innerHTML=list+"</ul>";
+                
+            }
+        </script>
+    </body>
+</html>

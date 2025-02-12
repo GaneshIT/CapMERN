@@ -1,0 +1,7 @@
+<h1 id="fname"></h1>
+<script>
+    //Using URLSearchParams to access current URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('lname');//querystring
+    document.getElementById('fname').innerText=myParam;
+</script>
