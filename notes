@@ -109,6 +109,27 @@ if (regex.test(mail)) {
 }
 
 
+1. HTML5 sematic elements - <section><nav><article>
+2. HTML5 Form validation
+3. HTML5 web storage(local & session)
+localStorage.setItem("mvedata",[]);
+localStorage.setItem();
+4. CSS properties
+5. CSS functions
+6. CSS chaining/traversals
+7. JS form validations
+8. JS event handling
+9. JS Array Methods
+10.JS Array of objects
+11.ES6 Methods
+12.Arrow Functions
+13.For-in, For-of, for-each
+14.Promises
+15.es6 Map() class
+
+
+
+
 
 
 

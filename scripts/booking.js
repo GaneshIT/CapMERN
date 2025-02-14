@@ -3,6 +3,24 @@
 //it will exectue callback function either reject r resolve
 //promise states->Pending-> To either Reject or Resolve
 
+document.querySelector('li').addEventListener('click',()=>alert('Hi'));
+
+
+document.getElementsByClassName('btn').addEventListener('click',()=>alert('hi'))
+
+function pText(){
+    document.getElementById('text').innerText="Welcome";
+}
+
+sessionStorage.setItem('list',["A","B","C"])
+var items=sessionStorage.getItem('list');
+var li="<ul>";
+for(let i=0;i<items.length;i++)
+{
+    li=li+`<li>${items[i]}`;
+}
+li=li+"</ul>"
+document.getElementById('list').innerHTML=li;
 //how to create promise object
 var p=new Promise(function(resolve,reject){
     //logic
