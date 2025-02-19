@@ -77,3 +77,18 @@ class s{
 }
 const my=new s(1,'aa');
 my.get(P);
+
+
+// /^[A-Za-z0-9]+@[a-zA-Z]$/
+
+
+
+
+
+
+
+function findFreq(arr){
+    //logic here
+    
+    return 10;
+}

@@ -131,6 +131,40 @@ localStorage.setItem();
 
 
 
+Node js -> NPM
+
+To check version
+node -v 
+npm -v
+
+How to setup initialization project data file
+1. npm -init
+
+How to install packages/libraries?
+2. npm install packagename
+   npm install packagename@4.0.0
+   npm install -g packagename
+
+Note: -g means, Will be installed in
+the system, if not mentioned then
+it will be installed in the folder
+itself
+
+
+
+Express Routing:
+->Routing used to redirect to path/file/page
+->If routing matches, then callback function triggered
+->Routing functions-> Get, Post, Put, Delete
+Syntax:
+              get(Route,callbackFunction);
+              post(Route,callbackFunction);
+              put(Route,callbackFunction);
+              delete(Route,callbackFunction);
+
+
+
+
 
 
 
