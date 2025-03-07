@@ -1,0 +1,5 @@
+product: Mouse
+desc:test
+
+product:keyboard
+desc:keyboard test

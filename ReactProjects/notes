@@ -1,0 +1,82 @@
+React JS
+
+* its View Layer
+* Virtual DOM Support
+* Component based architecture
+* Performance based UI Application
+* Server side rendering
+* JSX- javascript and xml   .jsx or .tsx
+
+
+f1.html
+<form method=post>
+    <input type="text"> 
+    <button>OK</button>
+    <h1>Welcome,Raj</h1>
+</form>
+React Role - 
+Virutal DOM
+<form method=post>
+    <input type="text" value="Raj"> 
+    <button>OK</button>
+    <h1>Welcome,Raj</h1>
+</form>
+
+
+
+React Project setup:
+step 1: install react template
+command: npm install -g create-react-app
+
+step 2: create react project
+command: npx create-react-app projectname
+note: project name should be small letters
+
+step 3: how to run react app
+command: npm start
+
+
+React Components:
+1. Class component
+    *Statefull component
+    *it will follow component life cycle
+2. Functional component
+    *Stateless component
+    *No life cycle
+
+What is component?
+    *A unit of html, css and javascript logic
+
+Component access rules?
+*Comonent name starting letter capital
+*Every component must be exported
+*Before call the component, it should be imported
+*Should call component as a tag
+
+
+Props:
+*Can pass data one to another component
+*Its read-only. cannot modified
+*Can be used in function and class component
+
+State:
+*Can acccess only in the class component
+*State value can be modified
+
+
+class Component:
+*its statefull component
+*it will follow the life cycle methods in every change
+ in the component
+
+ --Life cycle methods
+ 1. Mounting
+        *constructor()
+        *render()
+        *componentDidMount()
+ 2. Updating
+        *setState(), props, forceUpdate()
+        *render()
+        *componentDidUpdate()
+ 3. UnMounting
+        *componentWillUnMount()

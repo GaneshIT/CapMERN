@@ -1,0 +1,29 @@
+Authentication & Authorization
+
+Authentication:
+* Giving access level for authenticated users
+
+Authorization
+* Giving access level for resource based on user 
+roles & policy
+
+Security Token:
+* Exchange information in between parties(client/server)
+  in secure way.
+Example: JWT(JsonWebToken), OAuth Token
+
+
+
+
+user/login -Route
+
+router.post("booking/create",jwtokent,callbackFunc(){
+n
+})
+
+401
+
+
+Modules for JWT setup:
+1. bcrypt
+2. jsonwebtoken

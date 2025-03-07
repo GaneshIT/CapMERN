@@ -1,0 +1,15 @@
+Node Js Core modules:
+
+1. http
+2. fs
+3. os
+4. url
+http://facebook.com/profile
+5. querystring
+http://facebook.com/profile?id=11&name=raj
+{
+    id:11,
+    name:raj
+}
+6. crypto
+7. events

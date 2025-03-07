@@ -1,0 +1,19 @@
+1. express lib
+    ->To create express server/app
+2. nodemon lib
+    ->Auto server update in running
+3. body-parser
+    ->To handle request body datao
+4. express-session
+    ->To handle request session session & 
+    ->data will be stored in the server
+    ->To manage route access level
+5. multer
+    ->To handle file upload process
+6. jwt
+    ->To handle security token 
+7. cookie-parser
+    ->To store data client side
+
+
+https://sbi.com/{acn}/{amt}    

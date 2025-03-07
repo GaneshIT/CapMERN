@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.io Tutorial</title>
+  </head>
+  <body>
+    <input type="checkbox" value="C" name="courses" />
+    <input type="checkbox" value="C++" name="courses" />
+    <input type="checkbox" value="java" name="courses" />
+    <input type="checkbox" value="js" name="courses" />
+    <input type="checkbox" value="Css" name="courses" disabled />
+    <h1>Socket.io Tutorial</h1>
+    <div id="messages"></div>
+    <input id="message-input" type="text" placeholder="Type your message here">
+    <button id="send-button">Send</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    let cnt=0;
+        var courses=document.getElementsByName('courses');
+        for (let i=0;i<courses.length;i++){
+            if(courses[i].checked){
+                    cnt++;
+            }
+            
+        }
+        document.getElementById('result').innerText="You have selected "+cnt;
+        document.getElementById('btn').disabled=false;
+      const socket = io();
+      socket.on('connect', () => {
+        console.log('Connected to server');
+      });
+      socket.on('disconnect', () => {
+        console.log('Disconnected from server');
+      });
+      const messages = document.getElementById('messages');
+      const messageInput = document.getElementById('message-input');
+      const sendButton = document.getElementById('send-button');
+      sendButton.addEventListener('click', () => {
+        const message = messageInput.value;
+        socket.emit('message', message);
+        messageInput.value = '';
+      });
+      socket.on('message', (message) => {
+        const messageElement = document.createElement('div');
+        messageElement.innerText = message;
+        messages.appendChild(messageElement);
+      });
+    </script>
+  </body>
+</html>
+
+
+

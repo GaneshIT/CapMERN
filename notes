@@ -166,6 +166,28 @@ Syntax:
 
 
 
+var p=new Promise(function(resolve,reject){
+    if(true)
+        resolve('success')
+    else
+        reject('Error')
+});
+
+p.then((res)=>alert(res)).catch((err)=>alert(err))
+
+
+What is EventEmitter:   require('events')
+enabling components to communicate and react to events without tight coupling
+
+Publishes events: These are named signals indicating something happening within the application.
+
+Manages subscribers: Components interested in specific events register themselves as listeners.
+
+Triggers listener responses: When an event is emitted, all its subscribed listeners are notified and run their registered callback functions.
+
+
+
+
 
 
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+
+        <script>
+            console.log('1');
+            setTimeout(()=>{
+                console.log('2');
+            },5000)
+            console.log('3');
+        </script>
+    </body>
+</html>
+
+--url
+const url = require('url'); 
+const parseURL = url.parse( 
+'https://geeksforgeeks.org:3000/p/a/t/h?query=string#hash'); 
+  
+console.log("1 =>", parseURL) 
+
+
+--qry str
+import url from 'url'
+import querystring from 'querystring'
+
+// A URL is taken
+let exampleUrl = 
+'http://www.company.com:81/a/b/c.html?user=GEEKSFORGEEKS&year=2021#p2';
+
+//Parse the whole URL
+let parsed_Url = url.parse(exampleUrl);
+
+// Parse only querystring.
+let parsed_queryString = querystring.parse(parsed_Url.query);
