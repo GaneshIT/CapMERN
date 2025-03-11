@@ -6,12 +6,8 @@ var router=express.Router();
 //HTTP method Verbs  - get(),post(),delete(),put(),patch()
 //Creating http routes
 //get()->Requesting data from server
-router.get("/:id",(req,res)=>{
-    res.send("Movies data..."+req.params.id);
-})
-router.get("/",(req,res)=>{
-    res.send("Movies data...");
-})
+router.get("/:id",mve.getAll)
+router.get("/",mve.getAll)
 //post()->Sending data from client to server
 router.post("/",mve.create)
 //delete()->deleting data from server

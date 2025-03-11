@@ -5,8 +5,15 @@ const session = require('express-session');
 var movieRoute=require('./routes/movies.js')
 var usrR=require('./routes/user.js')
 var db=require('./db/db.config.js');
+var cors=require('cors');
 //Enable express server function
 var app=express();
+
+var corsOptions = {
+    origin: "http://localhost:3000" //client URL
+  };
+  
+  app.use(cors(corsOptions));
 
 app.use(session({
     secret: 'my-secret-key',
@@ -33,7 +40,7 @@ const requireAuth = (req, res, next) => {
         res.send('UnAuth'); // User is not authenticated, redirect to login page
     }
 }
-app.use("/movies",requireAuth,movieRoute);
+app.use("/movies",movieRoute);
 app.use('/',usrR);
 //http://localhost:4000/ganesh
 app.get("/profile/:name/:id",(req,res)=>{

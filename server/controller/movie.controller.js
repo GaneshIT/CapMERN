@@ -11,11 +11,13 @@ exports.create=(req,res)=>{
    //insert data into mongodb collection
     movie.save()
     .then((result)=>
-       console.log("Saved......")
+       res.send({"message":"Successfully saved","data":result})
     )
-    .catch((err)=>console.log("err",err))
+    .catch((err)=>res.send({"message":"Error","data":err}))
     //
 }
-getAll=()=>{
-    //
+exports.getAll=(req,res)=>{
+    MovieModel.find()//select * from moviemodel
+    .then(response=>res.send(response))
+    .catch(err=>res.send(err));
 }
