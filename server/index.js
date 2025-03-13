@@ -4,6 +4,7 @@ var mongoose=require('mongoose');
 const session = require('express-session');
 var movieRoute=require('./routes/movies.js')
 var usrR=require('./routes/user.js')
+var eventsRoute=require('./routes/events.js')
 var db=require('./db/db.config.js');
 var cors=require('cors');
 //Enable express server function
@@ -41,6 +42,8 @@ const requireAuth = (req, res, next) => {
     }
 }
 app.use("/movies",movieRoute);
+app.use("/events",eventsRoute);
+
 app.use('/',usrR);
 //http://localhost:4000/ganesh
 app.get("/profile/:name/:id",(req,res)=>{

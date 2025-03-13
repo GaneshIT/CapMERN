@@ -60,19 +60,47 @@ export default class AddMovie extends React.Component {
         .then(result=>this.setState({movieList:result}))
         .catch(err=>alert(err));
     }
-    editMovie(index){
-        this.setState({row:index});
-        this.setState({moviename:this.state.movieList[index].name});
-        this.setState({movietype:this.state.movieList[index].type});
-        this.setState({moviedesc:this.state.movieList[index].desc});
-        this.setState({isUpdate:true});
+    editMovie(id){
+         this.setState({row:id});
+        // this.setState({moviename:this.state.movieList[index].name});
+        // this.setState({movietype:this.state.movieList[index].type});
+        // this.setState({moviedesc:this.state.movieList[index].desc});
+        //db.moviecollection.find({_id:id})
+        fetch(`http://localhost:4000/movies/`+id)// 1 object
+        .then(response=>response.json())
+        .then(response=>{
+            this.setState({moviename:response[0].name});
+            this.setState({movietype:response[0].type});
+            this.setState({moviedesc:response[0].desc});
+            this.setState({isUpdate:true});
+        })
+        .catch(err=>alert(err.message));
+        
     }
     updateMovie(){
-        this.state.movieList[this.state.row].name=this.state.moviename;
-        this.state.movieList[this.state.row].type=this.state.moviedesc;
-        this.state.movieList[this.state.row].desc=this.state.movietype;
-        this.setState({movieList:this.state.movieList});
+        // this.state.movieList[this.state.row].name=this.state.moviename;
+        // this.state.movieList[this.state.row].type=this.state.moviedesc;
+        // this.state.movieList[this.state.row].desc=this.state.movietype;
+        // this.setState({movieList:this.state.movieList});
+        // this.setState({isUpdate:false});
+        var data={
+            "_id":this.state.row,
+            "name":this.state.moviename,//moviename textbox value
+            "type":this.state.movietype,//movietype textbox value
+            "desc":this.state.moviedesc //moviedesc textbox value
+        }
+       fetch("http://localhost:4000/movies/"+data._id,{
+        method:"PUT",
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+       })
+       .then(response=>response.json())//http response
+       .then(result=>{
+        alert(result.message);
         this.setState({isUpdate:false});
+        this.getAll();
+        })//http result
+       .catch(err=>alert(err.message));//http errors
     }
     deleteMovie(index){
         this.state.movieList.splice(index,1);
@@ -122,8 +150,8 @@ export default class AddMovie extends React.Component {
                                 <td>{item.name}</td>
                                 <td>{item.type}</td>
                                 <td>{item.desc}</td>
-                                <td><button onClick={()=>this.editMovie(index)}>Edit</button></td>
-                                <td><button onClick={()=>this.deleteMovie(index)}>Delete</button></td>
+                                <td><button onClick={()=>this.editMovie(item._id)}>Edit</button></td>
+                                <td><button onClick={()=>this.deleteMovie(item._id)}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>

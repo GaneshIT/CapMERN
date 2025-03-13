@@ -1,15 +1,15 @@
 //Controller will connect the model
 //To make CRUD operations
-var MovieModel=require('../models/movie.model.js')
+var EventsModel=require('../models/events.model.js')
 
 exports.create=(req,res)=>{
-    var movie=new MovieModel({
+    var event=new EventsModel({
         name:req.body.name,
         type:req.body.type,
         desc:req.body.desc,
     });
    //insert data into mongodb collection
-    movie.save()
+   event.save()
     .then((result)=>
        res.send({"message":"Successfully saved","data":result})
     )
@@ -17,26 +17,26 @@ exports.create=(req,res)=>{
     //
 }
 exports.getAll=(req,res)=>{
-    MovieModel.find()//select * from moviemodel
+    EventsModel.find()//select * from EventsModel
     .then(response=>res.send(response))
     .catch(err=>res.send(err));
 }
 exports.getById=(req,res)=>{
     var id=req.params.id;
-    MovieModel.find({_id:id})
+    EventsModel.find({_id:id})
     .then(response=>res.send(response))
     .catch(err=>res.send(err));
 }
 exports.update=(req,res)=>{
     var id=req.params.id;
-    var movie={
+    var event={
         _id:id,
         name:req.body.name,
         type:req.body.type,
         desc:req.body.desc,
     };
    //updat data into mongodb collection
-   MovieModel.findByIdAndUpdate(id,movie)
+   EventsModel.findByIdAndUpdate(id,event)
     .then((result)=>
     res.send({"message":"Successfully updated","data":result})
     )
@@ -44,7 +44,7 @@ exports.update=(req,res)=>{
     //
 }
 exports.delete=(req,res)=>{
-    MovieModel.findByIdAndDelete(req.params.id)
+    EventsModel.findByIdAndDelete(req.params.id)
     .then(response=>res.send({"message":"Successfully deleted","data":response}))
     .catch(error=>res.send({"message":error,"data":null}))
 }

@@ -80,3 +80,56 @@ class Component:
         *componentDidUpdate()
  3. UnMounting
         *componentWillUnMount()
+
+
+React Routing setup:
+
+Step 1:
+npm install react-router-dom
+
+step 2:
+create navbar/menubar using <Link> component
+Example:  <Link to={"/movies"}> Movies </Link>
+
+step 3:
+setup <Routes> component to handle all the route component
+
+step 4:
+setup <Route> component inside the <Routes> component
+Route will be checking the path and element/component.
+Example:
+if Route path is "/movies"
+then render element <MoviesComponent>
+<Routes>
+    <Route path="/movies" element={<MoviesComponent />} />
+</Routes>
+
+step 5:
+setup <BrowserRouter> component in the root component
+to handle all the browser routes
+
+
+how to access params in the class?
+import queryString from 'query-string';
+...
+const queryStringParams = queryString.parse(window.location.search);
+
+
+React Hooks:
+********************
+React Hooks are like special tools that make it easier to add features to your function components, without the need for complex class components. They help you manage state, deal with component updates, and share logic across your app in a simpler way
+
+1. useState()
+    syntax: const[statevariable,statemethod]=useState(initialValue);
+    example: const[a,setA]=useState(10);
+    setA(20);    // a value is 20
+2. useEffect()
+     if useState method is trigger then useEffect will call automatically
+3. useContext()
+4. useParams()
+5. useLocation()
+6. useReducer()
+7. useNavigate()
+8. useCallBack()
+9. useMemo()
+
