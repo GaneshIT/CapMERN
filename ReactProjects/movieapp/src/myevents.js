@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 export default function Events(){
+    const navigate=useNavigate();//how to navigate one to another route
     const[name,setName]=useState('');
     const[type,setType]=useState('');
     const[desc,setDesc]=useState('');
@@ -33,7 +35,10 @@ export default function Events(){
             })
             .then(response=>response.json())//http response
             .then(result=>{
-             alert(result.message);
+                setMessage(result.message);
+                setTimeout(()=>{
+                   setMessage('');
+                },5000)
              getAll();
              })//http result
             .catch(err=>alert(err.data));//http errors
@@ -72,7 +77,10 @@ export default function Events(){
       })
       .then(response=>response.json())//http response
       .then(result=>{
-       alert(result.message);
+        setMessage(result.message);
+        setTimeout(()=>{
+           setMessage('');
+        },5000)
        setUpdate(false);//update button hidden and save button visible
        getAll();
        })//http result
@@ -86,6 +94,10 @@ export default function Events(){
     const deleteConfirm=(id)=>{
         setEventId(id);//latest event id
     }
+    const viewEvent=(id)=>{
+        const name='event1'
+        navigate(`/viewdetails/${id}/${name}`);
+    }
     const deleteEvent=()=>{
     fetch("http://localhost:4000/events/"+eventId,{
         method:"DELETE",
@@ -94,17 +106,28 @@ export default function Events(){
        .then(response=>response.json())//http response
             .then(result=>{
              setMessage(result.message);
+             setTimeout(()=>{
+                setMessage('');
+             },5000)
              getAll();
              })//http result
             .catch(err=>alert(err.data));//http errors
     }
     useEffect(()=>{
-        alert('hi');
             getAll();
-    },[name,type])
+    },[])
     return(
         <div className='container'>
-            <h3>Events</h3>
+            <div className='row' style={{marginTop:"1%"}}>
+                <div className='col-md-3'>
+                <h3>Events</h3>
+                </div>
+                <div className='col-md-9'>
+                <div style={{height:"30px"}} >
+        {(message!='')?<div className='alert alert-success'>{message}</div>:''}
+      </div>
+                </div>
+            </div>
             <hr />
             <div className='row'>
                 <div className='col-md-5'>
@@ -112,6 +135,7 @@ export default function Events(){
                 <div className='form-group'>
                     <label>Event Name</label>
                     <input type="text" value={name} onChange={readName} className='form-control' />
+                    {name}
                 </div>
                 <div className='form-group'>
                     <label>Event Type</label>
@@ -128,10 +152,11 @@ export default function Events(){
                     </form>
                 </div>
                 <div className='col-md-7'>
+                    
                 {(eventsList.length>0)?
                     <table className='table table-bordered'>
                         <thead>
-                            <tr><th>Name</th><th>Type</th><th>Desc</th><th>Edit</th><th>Delete</th></tr>
+                            <tr><th>Name</th><th>Type</th><th>Desc</th><th>Edit</th><th>View</th><th>Delete</th></tr>
                         </thead>
                         <tbody>
                         {eventsList.map((item,index)=>(
@@ -140,6 +165,7 @@ export default function Events(){
                                 <td>{item.type}</td>
                                 <td>{item.desc}</td>
                                 <td><button className='btn btn-primary' onClick={()=>editEvent(item._id)}>Edit</button></td>
+                                <td><button className='btn btn-info' onClick={()=>viewEvent(item._id)}>View</button></td>
                                 <td><button className='btn btn-danger' data-toggle="modal" data-target="#deleteModal" onClick={()=>deleteConfirm(item._id)}>Delete</button></td>
                             </tr>
                         ))}
@@ -159,12 +185,12 @@ export default function Events(){
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div className='modal-body'>
+      {/* <div className='modal-body'>
         {(message!='')?<div className='alert alert-success'>{message}</div>:''}
-      </div>
+      </div> */}
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" onClick={()=>deleteEvent()}>Confirm</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" onClick={()=>deleteEvent()}>Confirm</button>
       </div>
     </div>
   </div>

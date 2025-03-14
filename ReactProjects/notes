@@ -133,3 +133,7 @@ React Hooks are like special tools that make it easier to add features to your f
 8. useCallBack()
 9. useMemo()
 
+ const location = useLocation();
+    var searchParams=new URLSearchParams(location.search);
+    const {id}=useParams();
+    const query = searchParams.get('id');

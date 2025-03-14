@@ -4,7 +4,9 @@ import AddMovie from './addmovie';
 import Contact from './contact';
 import Home from './home';
 import Events from './myevents';
+import ViewEvent from './viewevent';
 export default function App(){
+  
   return(
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,6 +41,7 @@ export default function App(){
           <Route path='/movies' element={<AddMovie></AddMovie>}></Route>
           <Route path='/events' element={<Events></Events>}></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
+          <Route path='/viewdetails/:id/:name' element={<ViewEvent></ViewEvent>}></Route>
         </Routes>
     </div>
   );
