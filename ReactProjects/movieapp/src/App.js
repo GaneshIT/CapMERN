@@ -1,16 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import AddMovie from './addmovie';
 import Contact from './contact';
 import Home from './home';
+import LocationContext from './locationcontext';
 import Events from './myevents';
 import ViewEvent from './viewevent';
 export default function App(){
-  
+  const [location, setLocation] = useState('bangalore');
+  const updateLocation=(loc)=>{
+    setLocation(loc);
+  }
   return(
+    <LocationContext.Provider value={{location,updateLocation}}>
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">MyShow</a>
+  <a class="navbar-brand" href="#">MyShow-{location}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -44,5 +50,6 @@ export default function App(){
           <Route path='/viewdetails/:id/:name' element={<ViewEvent></ViewEvent>}></Route>
         </Routes>
     </div>
+    </LocationContext.Provider>
   );
 }
